@@ -1,8 +1,3 @@
-resource "local_file" "Welcome" {
-  content  = "Creating file thru terraform local_file"
-  filename = "${path.module}/Welcome.log"
-}
-
 resource "local_file" "inventory_file" {
   content = templatefile("details.tpl",
     {
