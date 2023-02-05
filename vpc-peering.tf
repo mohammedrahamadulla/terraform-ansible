@@ -2,10 +2,6 @@ data "aws_vpc" "ansible_vpc" {
   id = "vpc-0b5b774c20cef227c"
 }
 
-data "aws_route_table" "ansible_vpc_rt" {
-  subnet_id = "subnet-02f7e210db437dff1"
-}
-
 resource "aws_vpc_peering_connection" "foo" {
   peer_vpc_id   = data.aws_vpc.ansible_vpc.id
   vpc_id        = aws_vpc.default.id
