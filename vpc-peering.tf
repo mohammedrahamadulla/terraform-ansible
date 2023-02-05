@@ -32,7 +32,7 @@ resource "aws_route" "peering" {
 
 resource "aws_route" "peeringfromansible" {
   route_table_id            = data.aws_route_table.ansible_vpc_rt.id
-  destination_cidr_block    = "10.1.0.0/16"
+  destination_cidr_block    = "172.16.0.0/16"
   vpc_peering_connection_id = aws_vpc_peering_connection.foo.id
   depends_on                = [aws_route_table.terraform-public]
 }
