@@ -2,8 +2,6 @@
   - name: Play for Install Nginx on WebServers
     hosts: private
     gather_facts: yes
-    become: yes
-    become_user: root
     tasks:
        - name: Run Apt Update
          shell: apt update
