@@ -41,8 +41,8 @@
             owner=root
             group=root
             mode=0644
-       tags:
-           - js
+        tags:
+          - js
         notify:
            - restart nginx
     handlers:
