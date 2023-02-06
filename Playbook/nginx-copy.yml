@@ -33,4 +33,6 @@
             owner=root
             group=root
             mode=0644
+       - name: restart nginx
+         command: service nginx restart
          
