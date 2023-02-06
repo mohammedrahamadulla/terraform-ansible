@@ -19,6 +19,10 @@
             owner=root
             group=root
             mode=0644
+         tags:
+           - index
+         notify:
+            - restart nginx   
        - name: Copy the style files to  destination folder.
          copy: >
             src=/tmp/dockertest1/style.css
@@ -26,6 +30,10 @@
             owner=root
             group=root
             mode=0644
+         tags:
+           - style
+         notify:
+            - restart nginx   
        - name: Copy the javascript files to  destination folder.
          copy: >
             src=/tmp/dockertest1/scorekeeper.js
@@ -33,6 +41,11 @@
             owner=root
             group=root
             mode=0644
-       - name: restart nginx
-         command: service nginx restart
+       tags:
+           - js
+        notify:
+           - restart nginx
+    handlers:
+      - name: restart nginx
+        command: service nginx restart
          
