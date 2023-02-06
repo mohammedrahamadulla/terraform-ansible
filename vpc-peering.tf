@@ -3,7 +3,7 @@ data "aws_vpc" "ansible_vpc" {
 }
 
 data "aws_route_table" "ansible_vpc_rt" {
-  subnet_id = "subnet-0d124b5eb12011584"
+  subnet_id = "subnet-02f7e210db437dff1"
 }
 
 resource "aws_vpc_peering_connection" "foo" {
