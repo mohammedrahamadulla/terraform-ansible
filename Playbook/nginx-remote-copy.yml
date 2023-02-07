@@ -9,7 +9,7 @@
          shell: apt update
 
        - name: Clone Git Repo
-         shell: cd /tmp && git clone -b  DevOpsB27-Ansible https://github.com/mavrick202/dockertest1.git
+         shell: cd /tmp && git clone -b DevOpsB27-Ansible https://github.com/mavrick202/dockertest1.git
          tags:
            - clone
 
