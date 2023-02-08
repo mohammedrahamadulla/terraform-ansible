@@ -1,19 +1,19 @@
 [docker_servers]
-testserver01 = aws_instance.web-1.private_ip
-testserver02 = aws_instance.web-2.private_ip
-testserver03 = aws_instance.web-3.private_ip
-testserver04 = aws_instance.web-4.private_ip
-testserver05 = aws_instance.web-5.private_ip
-testserver06 = aws_instance.web-6.private_ip
+testserver01 ansible_port=22 ansible_host=${testserver01}
+testserver02 ansible_port=22 ansible_host=${testserver02}
+testserver03 ansible_port=22 ansible_host=${testserver03}
+testserver04 ansible_port=22 ansible_host=${testserver04}
+testserver05 ansible_port=22 ansible_host=${testserver05}
+testserver06 ansible_port=22 ansible_host=${testserver06}
 
 [docker_master]
-testserver01 = aws_instance.web-1.private_ip
+testserver01 ansible_port=22 ansible_host=${testserver01}
 
 [docker_workers]
-testserver04 = aws_instance.web-4.private_ip
-testserver05 = aws_instance.web-5.private_ip
-testserver06 = aws_instance.web-6.private_ip
+testserver04 ansible_port=22 ansible_host=${testserver04}
+testserver05 ansible_port=22 ansible_host=${testserver05}
+testserver06 ansible_port=22 ansible_host=${testserver06}
 
 [docker_managers]
-testserver02 = aws_instance.web-2.private_ip
-testserver03 = aws_instance.web-3.private_ip
+testserver02 ansible_port=22 ansible_host=${testserver02}
+testserver03 ansible_port=22 ansible_host=${testserver03}
