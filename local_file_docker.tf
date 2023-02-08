@@ -9,5 +9,5 @@ resource "local_file" "docker-inventory_file" {
       testserver06 = aws_instance.web-6.private_ip
     }
   )
-  filename = "invfile"
+  filename = "dockerinvfile"
 }
