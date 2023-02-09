@@ -6,6 +6,7 @@
     #no_log: True
     vars:
      user_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
           34356464643062396264623461383935343135333134366265663336366138643362353432613238
           3738636161386231616466656136313232653264356439610a666330356563303037316135323930
           37646139346566306238373862323236303963306238666538663232646563396563383437393235
@@ -25,14 +26,14 @@
         -  Restart SSH Service
       - name: Copy Encrypted File To /tmp
         copy:
-          src: ///home/ansibleadmin/Terraform-Packer-Ansible/aws_creds #This Encrypted File Must Be Created Prior To Running The Playbook.
+          src: /home/ansibleadmin/Terraform-Packer-Ansible/aws_creds #This Encrypted File Must Be Created Prior To Running The Playbook.
           dest: /tmp/aws_creds
           owner: root
           group: root
           mode: '0600'
       - name: Copy Encrypted File To .aws folder
         copy:
-          src: //home/ansibleadmin/Terraform-Packer-Ansible/aws_creds  #This Encrypted File Must Be Created Prior To Running The Playbook.
+          src: /home/ansibleadmin/Terraform-Packer-Ansible/aws_creds  #This Encrypted File Must Be Created Prior To Running The Playbook.
           dest: /root/.aws/aws_creds
           owner: root
           group: root
