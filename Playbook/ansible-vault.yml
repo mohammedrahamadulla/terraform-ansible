@@ -34,7 +34,7 @@
       - name: Copy Encrypted File To .aws folder
         copy:
           src: /home/ansibleadmin/Terraform-Packer-Ansible/aws_creds  #This Encrypted File Must Be Created Prior To Running The Playbook.
-          dest: /root/.aws/aws_creds
+          dest: /root/.aws/credentials
           owner: root
           group: root
           mode: '0600'
