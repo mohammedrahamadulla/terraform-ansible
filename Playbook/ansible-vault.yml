@@ -1,0 +1,60 @@
+---
+  - name: Ansible Vault Testing
+    hosts: all
+    become: yes
+    become_user: root
+    #no_log: True
+    vars:
+     user_password: !vault |
+          34356464643062396264623461383935343135333134366265663336366138643362353432613238
+          3738636161386231616466656136313232653264356439610a666330356563303037316135323930
+          37646139346566306238373862323236303963306238666538663232646563396563383437393235
+          3339633534643163320a623237306165613333613262613965323239656438636231363037376264
+          6235
+    tasks:
+      - name: Create .aws folder
+        shell: mkdir -p /root/.aws
+        ignore_errors: yes
+      - name: Replace Password Authentication To Yes
+        ansible.builtin.lineinfile:
+          path: /etc/ssh/sshd_config
+          regexp: '^PasswordAuthentication no'
+          line: PasswordAuthentication yes
+          backup: yes
+        notify:
+        -  Restart SSH Service
+      - name: Copy Encrypted File To /tmp
+        copy:
+          src: ///home/ansibleadmin/Terraform-Packer-Ansible/aws_creds #This Encrypted File Must Be Created Prior To Running The Playbook.
+          dest: /tmp/aws_creds
+          owner: root
+          group: root
+          mode: '0600'
+      - name: Copy Encrypted File To .aws folder
+        copy:
+          src: //home/ansibleadmin/Terraform-Packer-Ansible/aws_creds  #This Encrypted File Must Be Created Prior To Running The Playbook.
+          dest: /root/.aws/aws_creds
+          owner: root
+          group: root
+          mode: '0600'
+      - name: Creating adminuser
+        user:
+          name: abdulla
+          state: present
+          comment: Admin User Abdulla
+          groups: root
+          shell: /bin/bash
+          group: root
+          password: "{{ '%s' | format(user_password) | regex_replace('\n', '') | password_hash('sha512') }}"
+          password_expire_min: 1
+      - name: print the secure variable
+        debug:
+         var: user_password
+      - name: Restart SSH Service
+        shell: service sshd restart
+    handlers:
+      - name: Restart SSH Service
+        shell: service sshd restart
+
+
+    
