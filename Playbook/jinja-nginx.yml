@@ -22,21 +22,21 @@
            state=present
        - name: Copy the index.j2 Template to index destination folder.
          template: >
-            src=/home/ansibleadmin/Terraform-Packer-Ansible/Playbook/index.j2
+            src=/home/ansibleadmin/terraform-ansible/Playbook/index.j2
             dest=/var/www/html/index.nginx-debian.html
             owner=root
             group=root
             mode=0644
        - name: Copy the style files to destination folder.
          copy: >
-            src=/home/ansibleadmin/Terraform-Packer-Ansible/Playbook/style.css
+            src=/home/ansibleadmin/terraform-ansible/Playbook/style.css
             dest=/var/www/html/style.css
             owner=root
             group=root
             mode=0644
        - name: Copy the javascript files to destination folder.
          copy: >
-            src=/home/ansibleadmin/Terraform-Packer-Ansible/Playbook/scorekeeper.js
+            src=/home/ansibleadmin/terraform-ansible/Playbook/scorekeeper.js
             dest=/var/www/html/scorekeeper.js
             owner=root
             group=root
