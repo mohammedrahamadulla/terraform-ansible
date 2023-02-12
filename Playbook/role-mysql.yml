@@ -5,3 +5,9 @@
   become_user: root
   roles:
   - { role: geerlingguy.mysql }
+  tasks:
+  -  name: create a new database
+     mysql_db: >
+       name=myflixdb
+       state=present
+       login_user=root
