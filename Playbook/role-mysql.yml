@@ -1,0 +1,7 @@
+---
+- name: Install Nginx Using Ansible Role
+  hosts: private
+  become: yes
+  become_user: root
+  roles:
+  - { role: geerlingguymysql }
