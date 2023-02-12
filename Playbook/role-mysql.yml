@@ -6,8 +6,12 @@
   roles:
   - { role: geerlingguy.mysql }
   tasks:
-  -  name: create a new database
-     mysql_db: >
-       name=myflixdb
-       state=present
-       login_user=root
+  - name: create a new database
+    mysql_db: >
+      name=myflixdb
+      state=present
+      login_user=root
+  - name: Add sample data to database
+    copy: src=dump.sql dest=/tmp/dump.sql
+  - name: insert sample data into database
+    mysql_db: name=myflixdb state=import target=/tmp/dump.sql
