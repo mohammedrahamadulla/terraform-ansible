@@ -7,7 +7,8 @@
     become: yes
     become_user: root
     vars:
-      mysql_pass: 'India@123456'
+      mysql_admin: 'abdulla'
+      mysql_admin_password: 'India@123456'
     roles:
      - { role: geerlingguy.mysql } #Role not part of Collection
      - nginxinc.nginx_core.nginx #Role Part of nginx_core Collection
@@ -63,7 +64,7 @@
       - name: Create database user using hashed password with all database privileges
         community.mysql.mysql_user:
           name: mohammed
-          #login_user: mysql_admin
+          login_user: mysql_admin
           login_password: mysql_admin_password
           priv: '*.*:ALL'
           state: present
