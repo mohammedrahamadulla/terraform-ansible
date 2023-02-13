@@ -63,7 +63,7 @@
       - name: Create database user using hashed password with all database privileges
         community.mysql.mysql_user:
           name: mohammed
-          login_user: mysql_admin
+          #login_user: mysql_admin
           login_password: mysql_admin_password
           priv: '*.*:ALL'
           state: present
