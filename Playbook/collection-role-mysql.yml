@@ -62,21 +62,10 @@
         - check
       - name: Create database user using hashed password with all database privileges
         community.mysql.mysql_user:
-          name: adminsree
-          password: '*F65D6CBAF7F3307DDCC700FC03CB1E025036AF10'
-          encrypted: yes
+          name: mohammed
+          login_user: mysql_admin
+          login_password: mysql_admin_password
           priv: '*.*:ALL'
           state: present
-        tags:
-        - user
-      - name: Create database user using hashed password with all selected DB
-        community.mysql.mysql_user:
-          state: present
-          name: bob
-          password: '*F65D6CBAF7F3307DDCC700FC03CB1E025036AF10'
-          encrypted: yes
-          priv:
-            'myflixdb.*': 'ALL,GRANT'
-            'megastar.*': 'ALL,GRANT'
         tags:
         - user
