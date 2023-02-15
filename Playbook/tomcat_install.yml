@@ -1,6 +1,6 @@
 ---
   - name: Download Tomcat8 from tomcat.apache.org
-    hosts: webservers
+    hosts: testserver01
     vars:
       download_url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.83/bin/apache-tomcat-8.5.83.tar.gz
     tasks:
