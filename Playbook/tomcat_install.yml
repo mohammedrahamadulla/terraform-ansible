@@ -7,14 +7,14 @@
     - name: Download Open JDK
       become: yes
       apt:
-      name: openjdk-8-jre-headless
-      update_cache: yes
-      state: present
+       name: openjdk-8-jre-headless
+       update_cache: yes
+       state: present
   
     - name: validate if Java is availble 
       shell: 
-        java -version
-       
+       java -version
+      
     - name: Create the group
       become: yes
       group: 
@@ -23,8 +23,8 @@
     - name: Create the user
       become: yes
       user:
-       name: tomcat
-       state: present
+         name: tomcat
+         state: present
     - name: Create a Directory /opt/tomcat8
       become: yes
       file:
@@ -75,9 +75,9 @@
     - name: Enable the tomcat service and start
       become: yes
       systemd:
-        name: tomcat
-        enabled: yes
-        state: started
+         name: tomcat
+         enabled: yes
+         state: started
     - name: Connect to Tomcat server on port 8080 and check status 200 - Try 5 times
       tags: test
       uri:
