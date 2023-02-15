@@ -1,5 +1,5 @@
 ---
-  - name: Download Tomcat8 from tomcat.apache.org
+  - name: Download Tomcat10 from tomcat.apache.org
     hosts: testserver01
     vars:
       download_url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.5/bin/apache-tomcat-10.1.5.tar.gz
@@ -28,7 +28,7 @@
     - name: Create a Directory /opt/tomcat10
       become: yes
       file:
-        path: /opt/tomcat8
+        path: /opt/tomcat10
         state: directory
         mode: 0755
         owner: tomcat
@@ -43,10 +43,10 @@
         group: tomcat
         owner: tomcat
      
-    - name: Move files to the /opt/tomcat8 directory
+    - name: Move files to the /opt/tomcat10 directory
       become: yes
       become_user: tomcat
-      shell: "mv /opt/tomcat8/apache*/* /opt/tomcat8"
+      shell: "mv /opt/tomcat10/apache*/* /opt/tomcat10"
     - name: Creating a service file
       become: yes
       copy: 
@@ -58,12 +58,12 @@
          [Service]
          Type=forking
          User=tomcat
-         Environment="CATALINA_PID=/opt/tomcat8/logs/tomcat.pid"
-         Environment="CATALINA_BASE=/opt/tomcat8"
-         Environment="CATALINA_HOME=/opt/tomcat8"
+         Environment="CATALINA_PID=/opt/tomcat10/logs/tomcat.pid"
+         Environment="CATALINA_BASE=/opt/tomcat10"
+         Environment="CATALINA_HOME=/opt/tomcat10"
          Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
-         ExecStart=/opt/tomcat8/bin/startup.sh
-         ExecStop=/opt/tomcat8/bin/shutdown.sh
+         ExecStart=/opt/tomcat10/bin/startup.sh
+         ExecStop=/opt/tomcat10/bin/shutdown.sh
          Restart=on-abnormal
          [Install]
          WantedBy=multi-user.target
