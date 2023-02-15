@@ -38,7 +38,7 @@
       unarchive:
         src: "{{download_url}}"
         dest: /opt/tomcat10
-        mode: 0644
+        mode: 0755
         remote_src: yes
         group: tomcat
         owner: tomcat
@@ -46,10 +46,12 @@
     - name: Move files to the /opt/tomcat10 directory
       become: yes
       become_user: tomcat
+      become_user: root
       shell: "mv /opt/tomcat10/apache*/* /opt/tomcat10"
     - name: Creating a service file
       become: yes
       become_user: tomcat
+      become_user: root
       copy: 
        content: |-
          [Unit]
