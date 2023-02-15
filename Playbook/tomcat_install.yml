@@ -25,7 +25,7 @@
       user:
          name: tomcat
          state: present
-    - name: Create a Directory /opt/tomcat8
+    - name: Create a Directory /opt/tomcat10
       become: yes
       file:
         path: /opt/tomcat8
@@ -37,8 +37,8 @@
       become: yes
       unarchive:
         src: "{{download_url}}"
-        dest: /opt/tomcat8
-        mode: 0755
+        dest: /opt/tomcat10
+        mode: 0644
         remote_src: yes
         group: tomcat
         owner: tomcat
