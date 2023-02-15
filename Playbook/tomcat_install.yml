@@ -1,6 +1,6 @@
 ---
   - name: Download Tomcat10 from tomcat.apache.org
-    hosts: testserver01
+    hosts: testserver02
     vars:
       download_url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.5/bin/apache-tomcat-10.1.5.tar.gz
     tasks:
