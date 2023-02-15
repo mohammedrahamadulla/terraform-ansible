@@ -49,6 +49,7 @@
       shell: "mv /opt/tomcat10/apache*/* /opt/tomcat10"
     - name: Creating a service file
       become: yes
+      become_user: tomcat
       copy: 
        content: |-
          [Unit]
