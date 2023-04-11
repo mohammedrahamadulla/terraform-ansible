@@ -207,3 +207,5 @@ resource "aws_instance" "web-6" {
 	CostCenter = "ABCD"
     }
 }
+
+
